@@ -1,4 +1,4 @@
-package ru.myproject.passwordgenerator;
+package main.java.ru.myproject.passwordgenerator;
 
 import java.awt.*;
 
