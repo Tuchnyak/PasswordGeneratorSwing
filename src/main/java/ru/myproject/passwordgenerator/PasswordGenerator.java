@@ -193,8 +193,8 @@ public class PasswordGenerator {
                 str.append(ch);
             }
 
-            ratingField.setBackground(ResistanceChecker.passwordColor(arr));
             ratingField.setText(Integer.toString(ResistanceChecker.passwordRating(arr)));
+            ratingField.setBackground(ResistanceChecker.passwordColor(arr));
             passField.setText(str.toString());
         }
     }

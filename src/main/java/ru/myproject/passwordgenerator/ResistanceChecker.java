@@ -19,7 +19,7 @@ final class ResistanceChecker {
 
         if (intBits < 56) {
             return Color.pink;
-        } else if (intBits >= 56 && intBits <= 128) {
+        } else if (intBits >= 56 && intBits < 128) {
             return Color.yellow;
         } else return Color.green;
 
@@ -36,9 +36,9 @@ final class ResistanceChecker {
         } else {
             if (intBits < 56) {
                 return 1;
-            } else if (intBits < 64 && intBits >= 56) {
+            } else if (intBits >= 56 && intBits < 64) {
                 return 2;
-            } else if (intBits < 128 && intBits >= 64) {
+            } else if (intBits >= 64 && intBits < 128) {
                 return 3;
             } else return 4;
         }
