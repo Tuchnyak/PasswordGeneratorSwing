@@ -11,7 +11,7 @@ import java.awt.*;
  * Taken from:
  * https://habrahabr.ru/post/116331/
  */
-class ResistanceChecker {
+final class ResistanceChecker {
 
     static Color passwordColor(char[] arr) {
 

@@ -4,7 +4,7 @@ package main.java.ru.myproject.passwordgenerator;
  * Created by George on 27.03.2017.
  * Contains methods which returns arrays of randomized chars in ASCII from "!" up to "~"
  */
-public class Randomizer {
+final public class Randomizer {
 
     private static char[] charArray;
 

@@ -13,7 +13,7 @@ import java.io.*;
  * - both a lower and an uppercase characters
  * - characters with special symbols
  * - numbers
- */
+ **/
 public class PasswordGenerator {
 
     private JFrame frame;
@@ -160,11 +160,10 @@ public class PasswordGenerator {
 
     private class GenButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
-            String str = "";
+            StringBuilder str = new StringBuilder();
             char[] arr;
-//            char[] arr = new char[passLength]
 
-            if (radioCustom.isSelected()){
+            if (radioCustom.isSelected()) {
                 if (checkboxUpper.isSelected()) {
                     arr = Randomizer.generateAZBothCasesRange(passLength);
                     if (checkboxNumbers.isSelected()) {
@@ -191,36 +190,14 @@ public class PasswordGenerator {
             }
 
             for (char ch : arr) {
-                str += ch;
+                str.append(ch);
             }
 
             ratingField.setBackground(ResistanceChecker.passwordColor(arr));
             ratingField.setText(Integer.toString(ResistanceChecker.passwordRating(arr)));
-            passField.setText(str);
+            passField.setText(str.toString());
         }
     }
     /*END OF LISTENERS*/
-
-//    private static void test() {
-//        int num;
-//        char ch;
-//
-//        num = (int) (65 + Math.random() * (91 - 65));
-//
-//        ch = (char) num;
-//
-//        System.out.println(num + " - " + ch);
-//
-//        /*******/
-//        int aLen = 0;
-//
-//        System.out.println("Enter password length:");
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//        try {
-//            aLen = Integer.parseInt(reader.readLine());
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
 
 }
