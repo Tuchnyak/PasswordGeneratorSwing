@@ -11,9 +11,9 @@ import java.awt.*;
  * Taken from:
  * https://habrahabr.ru/post/116331/
  */
-public class ResistanceChecker {
+class ResistanceChecker {
 
-    public static Color passwordColor(char[] arr) {
+    static Color passwordColor(char[] arr) {
 
         int intBits = (int) Math.floor(bitsCalc(arr));
 
@@ -25,7 +25,7 @@ public class ResistanceChecker {
 
     }
 
-    public static int passwordRating(char[] arr) {
+    static int passwordRating(char[] arr) {
 
         int intBits;
 

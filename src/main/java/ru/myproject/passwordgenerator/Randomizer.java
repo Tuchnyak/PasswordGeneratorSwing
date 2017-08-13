@@ -9,7 +9,7 @@ public class Randomizer {
     private static char[] charArray;
 
     /*Generates symbols of full range from "!" up to "~" in ASCII*/
-    public static char[] generateFullRange(int length) {
+    static char[] generateFullRange(int length) {
         charArray = new char[length];
         for (int i = 0; i < length; i++) {
             charArray[i] = RandomChar.generateFullRangeChar();
@@ -27,7 +27,7 @@ public class Randomizer {
     }
 
     /*Generates lower case symbols of range from "a" to "z" in ASCII*/
-    public static char[] generateAZLowerRange(int length) {
+    static char[] generateAZLowerRange(int length) {
         charArray = new char[length];
         for (int i = 0; i < length; i++) {
             charArray[i] = RandomChar.generateAZLowerRangeChar();
@@ -36,7 +36,7 @@ public class Randomizer {
     }
 
     /*Generates both an upper and lower case symbols of range from "a" to "z" in ASCII*/
-    public static char[] generateAZBothCasesRange(int length) {
+    static char[] generateAZBothCasesRange(int length) {
         charArray = new char[length];
         int k;
         for (int i = 0; i < length; i++) {
@@ -51,7 +51,7 @@ public class Randomizer {
     }
 
     /*Generates both an upper and lowercase symbols of range from "a" to "z" and numbers in ASCII*/
-    public static char[] generateAZBothCasesAndNumbers(int length) {
+    static char[] generateAZBothCasesAndNumbers(int length) {
         charArray = new char[length];
         int k;
         for (int i = 0; i < length; i++) {
@@ -68,7 +68,7 @@ public class Randomizer {
     }
 
     /*Generates both an upper and lowercase symbols of range from "a" to "z" and special symbols in ASCII*/
-    public static char[] generateAZBothCasesAndSpecial(int length) {
+    static char[] generateAZBothCasesAndSpecial(int length) {
         charArray = new char[length];
         int k;
         for (int i = 0; i < length; i++) {
@@ -85,7 +85,7 @@ public class Randomizer {
     }
 
     /*Generates lower case symbols of range from "a" to "z" and numbers in ASCII*/
-    public static char[] generateAZLowercaseAndNumbers(int length) {
+    static char[] generateAZLowercaseAndNumbers(int length) {
         charArray = new char[length];
         int k;
         for (int i = 0; i < length; i++) {
@@ -100,7 +100,7 @@ public class Randomizer {
     }
 
     /*Generates lower case symbols of range from "a" to "z" and specials in ASCII*/
-    public static char[] generateAZLowercaseAndSpecial(int length) {
+    static char[] generateAZLowercaseAndSpecial(int length) {
         charArray = new char[length];
         int k;
         for (int i = 0; i < length; i++) {
@@ -115,7 +115,7 @@ public class Randomizer {
     }
 
     /*Generates lower case symbols of range from "a" to "z", numbers and special symbols in ASCII*/
-    public static char[] generateAZLowercaseAndNumbersAndSpecial(int length) {
+    static char[] generateAZLowercaseAndNumbersAndSpecial(int length) {
         charArray = new char[length];
         int k;
         for (int i = 0; i < length; i++) {
@@ -132,7 +132,7 @@ public class Randomizer {
     }
 
     /*Generates symbols numbers of range from "0" to "9" in ASCII*/
-    public static char[] generateNumbersRange(int length) {
+    static char[] generateNumbersRange(int length) {
         charArray = new char[length];
         for (int i = 0; i < length; i++) {
             charArray[i] = RandomChar.generateNumberChar();
