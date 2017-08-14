@@ -1,9 +1,8 @@
-package main.java.ru.myproject.passwordgenerator;
+package ru.myproject.passwordgenerator;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
 
 /**
  * Created by George on 27.03.2017.
