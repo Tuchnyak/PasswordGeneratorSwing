@@ -49,6 +49,7 @@ public class PasswordGenerator {
 
         plusButton = new JButton("+");
         plusButton.addActionListener(new PlusButtonListener());
+        plusButton.addKeyListener(new PlusButtonListenerHardware());    //********************
 
         minusButton = new JButton("-");
         minusButton.addActionListener(new MinusButtonListener());
@@ -132,6 +133,15 @@ public class PasswordGenerator {
                 lengthLabel.setText(Integer.toString(passLength));
             }
         }
+    }
+
+    private class PlusButtonListenerHardware extends KeyAdapter {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            
+        }
+
     }
 
     private class MinusButtonListener implements ActionListener {
