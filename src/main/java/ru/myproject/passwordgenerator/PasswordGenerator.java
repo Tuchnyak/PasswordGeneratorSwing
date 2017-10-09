@@ -15,6 +15,8 @@ import java.awt.event.*;
  **/
 public class PasswordGenerator {
 
+    private static final int WIFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
+
     private JFrame frame;
     private JTextField passField;
     private JTextField ratingField;
@@ -46,10 +48,22 @@ public class PasswordGenerator {
 
         lengthLabel = new JLabel();
         lengthLabel.setText(Integer.toString(passLength));
+        /*
+        KeyBinding for lengthLabel which increase and decrease password length
+         */
+        //PLUS
+        lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke("ADD"), "INCREASE_PASSWORD_LENGTH");
+        lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke(KeyEvent.VK_EQUALS, KeyEvent.SHIFT_DOWN_MASK),
+                "INCREASE_PASSWORD_LENGTH");
+        lengthLabel.getActionMap().put("INCREASE_PASSWORD_LENGTH", new IncreasePasswordLengthAction());
+        //MINUS
+        lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke("SUBTRACT"), "DECREASE_PASSWORD_LENGTH");
+        lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.SHIFT_DOWN_MASK),
+                "DECREASE_PASSWORD_LENGTH");
+        lengthLabel.getActionMap().put("DECREASE_PASSWORD_LENGTH", new DecreasePasswordLengthAction());
 
         plusButton = new JButton("+");
         plusButton.addActionListener(new PlusButtonListener());
-        plusButton.addKeyListener(new PlusButtonListenerHardware());    //********************
 
         minusButton = new JButton("-");
         minusButton.addActionListener(new MinusButtonListener());
@@ -94,6 +108,7 @@ public class PasswordGenerator {
         ratingField.setBorder(BorderFactory.createTitledBorder("Rating from 0 to 4:"));
         ratingField.setHorizontalAlignment(JTextField.CENTER);
         ratingField.setFont(new Font("Monospaced", Font.BOLD, 60));
+        ratingField.setEditable(false);
 
         //panel for panel with buttons (checkboxPanel) and rating
         JPanel centerBottomPanel = new JPanel();
@@ -115,7 +130,7 @@ public class PasswordGenerator {
 
     }
 
-    /*LISTENERS*/
+    /*LISTENERS & ACTIONS*/
     private class PassFieldListener implements FocusListener {
         public void focusGained(FocusEvent ev) {
             passField.selectAll();
@@ -135,17 +150,28 @@ public class PasswordGenerator {
         }
     }
 
-    private class PlusButtonListenerHardware extends KeyAdapter {
-
+    private class IncreasePasswordLengthAction extends AbstractAction {
         @Override
-        public void keyTyped(KeyEvent e) {
-            
+        public void actionPerformed(ActionEvent e) {
+            if (passLength < maxLength) {
+                passLength++;
+                lengthLabel.setText(Integer.toString(passLength));
+            }
         }
-
     }
 
     private class MinusButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
+            if (passLength > minLength) {
+                passLength--;
+                lengthLabel.setText(Integer.toString(passLength));
+            }
+        }
+    }
+
+    private class DecreasePasswordLengthAction extends AbstractAction {
+        @Override
+        public void actionPerformed(ActionEvent e) {
             if (passLength > minLength) {
                 passLength--;
                 lengthLabel.setText(Integer.toString(passLength));
