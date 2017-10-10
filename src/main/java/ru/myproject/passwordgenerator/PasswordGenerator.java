@@ -84,8 +84,8 @@ public class PasswordGenerator {
         genButton.getActionMap().put("GENERATE_PASSWORD", new GenButtonListener());
 
         //checkbox buttons for different password variations
-        checkboxUpper = new JCheckBox("Uppercase characters", false);
-        checkboxNumbers = new JCheckBox("Numbers", false);
+        checkboxUpper = new JCheckBox("Uppercase characters", true);
+        checkboxNumbers = new JCheckBox("Numbers", true);
         checkboxSpecial = new JCheckBox("Special symbols", false);
 
         //radio buttons for switching between only numbers and custom modes
