@@ -48,9 +48,7 @@ public class PasswordGenerator {
 
         lengthLabel = new JLabel();
         lengthLabel.setText(Integer.toString(passLength));
-        /*
-        KeyBinding for lengthLabel which increase and decrease password length
-         */
+        //*KeyBinding for lengthLabel which increase and decrease password length
         //PLUS
         lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke("ADD"), "INCREASE_PASSWORD_LENGTH");
         lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke(KeyEvent.VK_EQUALS, KeyEvent.SHIFT_DOWN_MASK),
@@ -61,6 +59,7 @@ public class PasswordGenerator {
         lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.SHIFT_DOWN_MASK),
                 "DECREASE_PASSWORD_LENGTH");
         lengthLabel.getActionMap().put("DECREASE_PASSWORD_LENGTH", new DecreasePasswordLengthAction());
+        //************
 
         plusButton = new JButton("+");
         plusButton.addActionListener(new PlusButtonListener());
@@ -78,6 +77,11 @@ public class PasswordGenerator {
         //button which initiates generation of a new password
         genButton = new JButton("*** GENERATE PASSWORD ***");
         genButton.addActionListener(new GenButtonListener());
+
+        //KeyBinding for password generation by pressing enter or spacebar buttons
+        genButton.getInputMap(WIFW).put(KeyStroke.getKeyStroke("SPACE"), "GENERATE_PASSWORD");
+        genButton.getInputMap(WIFW).put(KeyStroke.getKeyStroke("ENTER"), "GENERATE_PASSWORD");
+        genButton.getActionMap().put("GENERATE_PASSWORD", new GenButtonListener());
 
         //checkbox buttons for different password variations
         checkboxUpper = new JCheckBox("Uppercase characters", false);
@@ -193,7 +197,7 @@ public class PasswordGenerator {
         }
     }
 
-    private class GenButtonListener implements ActionListener {
+    private class GenButtonListener extends AbstractAction implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
             StringBuilder str = new StringBuilder();
             char[] arr;
