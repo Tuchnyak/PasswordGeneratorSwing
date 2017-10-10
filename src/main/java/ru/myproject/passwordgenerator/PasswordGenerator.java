@@ -53,12 +53,12 @@ public class PasswordGenerator {
         lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke("ADD"), "INCREASE_PASSWORD_LENGTH");
         lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke(KeyEvent.VK_EQUALS, KeyEvent.SHIFT_DOWN_MASK),
                 "INCREASE_PASSWORD_LENGTH");
-        lengthLabel.getActionMap().put("INCREASE_PASSWORD_LENGTH", new IncreasePasswordLengthAction());
+        lengthLabel.getActionMap().put("INCREASE_PASSWORD_LENGTH", new PlusButtonListener());
         //MINUS
         lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke("SUBTRACT"), "DECREASE_PASSWORD_LENGTH");
         lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke(KeyEvent.VK_MINUS, KeyEvent.SHIFT_DOWN_MASK),
                 "DECREASE_PASSWORD_LENGTH");
-        lengthLabel.getActionMap().put("DECREASE_PASSWORD_LENGTH", new DecreasePasswordLengthAction());
+        lengthLabel.getActionMap().put("DECREASE_PASSWORD_LENGTH", new MinusButtonListener());
         //************
 
         plusButton = new JButton("+");
@@ -145,7 +145,7 @@ public class PasswordGenerator {
         }
     }
 
-    private class PlusButtonListener implements ActionListener {
+    private class PlusButtonListener extends AbstractAction implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
             if (passLength < maxLength) {
                 passLength++;
@@ -154,17 +154,8 @@ public class PasswordGenerator {
         }
     }
 
-    private class IncreasePasswordLengthAction extends AbstractAction {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (passLength < maxLength) {
-                passLength++;
-                lengthLabel.setText(Integer.toString(passLength));
-            }
-        }
-    }
+    private class MinusButtonListener extends AbstractAction implements ActionListener {
 
-    private class MinusButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
             if (passLength > minLength) {
                 passLength--;
@@ -173,15 +164,29 @@ public class PasswordGenerator {
         }
     }
 
-    private class DecreasePasswordLengthAction extends AbstractAction {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (passLength > minLength) {
-                passLength--;
-                lengthLabel.setText(Integer.toString(passLength));
-            }
-        }
-    }
+    /*
+    I know that such code commenting is a bad practice but I prefer to leave it here for learning purposes
+     */
+//    private class IncreasePasswordLengthAction extends AbstractAction {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (passLength < maxLength) {
+//                passLength++;
+//                lengthLabel.setText(Integer.toString(passLength));
+//            }
+//        }
+//    }
+//
+//    private class DecreasePasswordLengthAction extends AbstractAction {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (passLength > minLength) {
+//                passLength--;
+//                lengthLabel.setText(Integer.toString(passLength));
+//            }
+//        }
+//    }
 
     private class RadioButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent ev) {
