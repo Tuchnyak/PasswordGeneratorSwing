@@ -39,6 +39,21 @@ public class PasswordGenerator {
         frame = new JFrame("PasswordGenerator v1");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //Main menu
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu jmInfo = new JMenu("Info");
+        JMenuItem jmiAbout = new JMenuItem("About this app");
+        JMenuItem jmiHotKeys = new JMenuItem("Hot keys");
+        JMenuItem jmiLinks = new JMenuItem("Links about passwords");
+
+        jmInfo.add(jmiAbout);
+        jmInfo.add(jmiHotKeys);
+        jmInfo.addSeparator();
+        jmInfo.add(jmiLinks);
+
+        menuBar.add(jmInfo);
+
         //components for password field, and option buttons
         passField = new JTextField(38);
         passField.setEditable(false);
@@ -127,9 +142,10 @@ public class PasswordGenerator {
         centerPanel.add(centerBottomPanel);
 
         //frame final setting
+        frame.setJMenuBar(menuBar);
         frame.getContentPane().add(BorderLayout.CENTER, centerPanel);
         frame.getContentPane().add(BorderLayout.SOUTH, genButton);
-        frame.setSize(640, 250);
+        frame.setSize(640, 300);
         frame.setVisible(true);
 
     }
