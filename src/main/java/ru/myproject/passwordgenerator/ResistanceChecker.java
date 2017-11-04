@@ -7,7 +7,7 @@ import java.awt.*;
  * - RED if a password is weak
  * - YELLOW if a password has medium resistance
  * - GREEN if a password is strong
- *
+ * <p>
  * Taken from:
  * https://habrahabr.ru/post/116331/
  */

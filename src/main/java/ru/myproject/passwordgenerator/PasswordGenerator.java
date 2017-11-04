@@ -43,14 +43,18 @@ public class PasswordGenerator {
         JMenuBar menuBar = new JMenuBar();
 
         JMenu jmInfo = new JMenu("Info");
+
         JMenuItem jmiAbout = new JMenuItem("About this app");
+        jmiAbout.addActionListener(new AboutMenuListener());
+
         JMenuItem jmiHotKeys = new JMenuItem("Hot keys");
-        JMenuItem jmiLinks = new JMenuItem("Links about passwords");
+        jmiHotKeys.addActionListener(new HotKeysMenuListener());
+//        JMenuItem jmiLinks = new JMenuItem("Links about passwords");
 
         jmInfo.add(jmiAbout);
         jmInfo.add(jmiHotKeys);
-        jmInfo.addSeparator();
-        jmInfo.add(jmiLinks);
+//        jmInfo.addSeparator();
+//        jmInfo.add(jmiLinks);
 
         menuBar.add(jmInfo);
 
@@ -63,6 +67,7 @@ public class PasswordGenerator {
 
         lengthLabel = new JLabel();
         lengthLabel.setText(Integer.toString(passLength));
+
         //*KeyBinding for lengthLabel which increase and decrease password length
         //PLUS
         lengthLabel.getInputMap(WIFW).put(KeyStroke.getKeyStroke("ADD"), "INCREASE_PASSWORD_LENGTH");
@@ -177,6 +182,56 @@ public class PasswordGenerator {
                 passLength--;
                 lengthLabel.setText(Integer.toString(passLength));
             }
+        }
+
+    }
+
+    private class AboutMenuListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFrame aboutFrame = new JFrame("About");
+
+            String aboutText = "Greetings!\n" +
+                    "Thank you for using this application.\n" +
+                    "This is password generator made to easily generate password in your everyday life.\n" +
+                    "Password generator assesses password's resistance from 0 to 4 points\n" +
+                    "\nApp has been made by Georgii Schennikov in intent to learn Java.";
+
+            JTextArea aboutTextArea = new JTextArea(aboutText);
+            aboutTextArea.setEditable(false);
+            aboutTextArea.setBackground(Color.WHITE);
+            aboutTextArea.setLineWrap(true);
+            aboutTextArea.setWrapStyleWord(true);
+            aboutTextArea.setFont(new Font("Monospaced", Font.BOLD, 14));
+
+            aboutFrame.getContentPane().add(BorderLayout.CENTER, aboutTextArea);
+            aboutFrame.setSize(565, 300);
+            aboutFrame.setVisible(true);
+        }
+    }
+
+    private class HotKeysMenuListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFrame hotKeysFrame = new JFrame("Hot keys");
+
+            String aboutText = "Hot keys:\n" +
+                    "* press Enter to generate password\n" +
+                    "* press + or - to increase or decrease password length\n" +
+                    "* password will be selected when you click on password field by LMB, so press CTRL + C then" +
+                    " to copy a password.";
+
+            JTextArea hotKeysTextArea = new JTextArea(aboutText);
+            hotKeysTextArea.setEditable(false);
+            hotKeysTextArea.setBackground(Color.WHITE);
+            hotKeysTextArea.setLineWrap(true);
+            hotKeysTextArea.setWrapStyleWord(true);
+            hotKeysTextArea.setFont(new Font("Monospaced", Font.BOLD, 14));
+//            hotKeysTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1, true));
+
+            hotKeysFrame.getContentPane().add(BorderLayout.CENTER, hotKeysTextArea);
+            hotKeysFrame.setSize(565, 300);
+            hotKeysFrame.setVisible(true);
         }
     }
 
