@@ -215,13 +215,13 @@ public class PasswordGenerator {
         public void actionPerformed(ActionEvent e) {
             JFrame hotKeysFrame = new JFrame("Hot keys");
 
-            String aboutText = "Hot keys:\n" +
+            String hotKeysText = "Hot keys:\n" +
                     "* press Enter to generate password\n" +
                     "* press + or - to increase or decrease password length\n" +
                     "* password will be selected when you click on password field by LMB, so press CTRL + C then" +
                     " to copy a password.";
 
-            JTextArea hotKeysTextArea = new JTextArea(aboutText);
+            JTextArea hotKeysTextArea = new JTextArea(hotKeysText);
             hotKeysTextArea.setEditable(false);
             hotKeysTextArea.setBackground(Color.WHITE);
             hotKeysTextArea.setLineWrap(true);
