@@ -7,3 +7,5 @@ Tutorial project to practice with java.swing.
  - both a lower and an uppercase characters
  - characters with special symbols
  - numbers
+
+![screenshot](https://preview.ibb.co/jLKM8p/PassGen.png)
